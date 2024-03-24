@@ -1,19 +1,19 @@
 import React from 'react';
-import data_product from "../Assets/data";
+import new_collection from "../Assets/new_collections";
 import Item from '../Items/Item';
 
-const Popular = () => {
+const NewCollection = () => {
   return (
     <div className='flex flex-col items-center justify-center '>
-    <h1 className=' text-3xl font-semibold p-2 '>POPULAR IN WOMEN</h1>
+    <h1 className=' text-3xl font-semibold p-2 '>NEW COLLECTIONS</h1>
     <hr className="h-2 w-60 bg-black rounded-full mb-2" />
-      <div className='flex flex-wrap justify-center gap-4 md:justify-start md:gap-8'>
-        {data_product.map((item, i) => (
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 justify-items-center'>
+        {new_collection.map((item, i) => (
           <Item key={i} id={item.id} name={item.name} image={item.image} newprice={item.new_price} oldprice={item.old_price} />
         ))}
       </div>
     </div>
   );
-};
+}
 
-export default Popular;
+export default NewCollection;
