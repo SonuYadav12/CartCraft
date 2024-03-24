@@ -1,11 +1,11 @@
 import React from "react";
 import hero from "../Assets/hero_image.png";
 import hand from "../Assets/hand_icon.png";
-import heroicon from "../Assets/arrow_icon.svg";
+import heroicon from "../Assets/arrow.png";
 
 const Hero = () => {
   return (
-    <div className="bg-gradient-to-br from-pink-200 to-pink-200 w-full flex items-center justify-center overflow-x-hidden">
+    <div className="bg-gradient-to-b from-pink-300 to-white w-full flex items-center justify-center overflow-x-hidden">
       <div className="max-w-screen-lg mx-auto w-full h-full flex flex-col-reverse lg:flex-row gap-6 p-2">
         <div className="flex flex-col justify-center p-5 w-full lg:w-1/2">
           <div className="p-4">
@@ -17,7 +17,7 @@ const Hero = () => {
               <p>collection </p>
             </div>
             <p className="font-bold text-5xl md:text-6xl lg:text-7xl">for everyone</p>
-            <button className="flex my-6 items-center justify-center bg-red-600 p-4 rounded-xl">
+            <button className="flex gap-3 text-white my-6 items-center justify-center bg-red-600 p-4  rounded-xl">
               Latest Collections <img src={heroicon} alt="" />
             </button>
           </div>
