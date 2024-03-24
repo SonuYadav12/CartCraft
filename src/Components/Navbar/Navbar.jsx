@@ -7,7 +7,7 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("Shop");
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-around shadow-lg p-5 bg-white">
+    <div className="flex flex-col md:flex-row items-center justify-around shadow-lg p-1 bg-white">
       <div className="flex items-center">
         <img className="w-14 mr-2" src={logo} alt="logo" />
         <h1 className="text-xl font-bold">SHOPPER</h1>
