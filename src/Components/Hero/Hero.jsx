@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="max-w-screen-lg mx-auto w-full h-full flex flex-col-reverse lg:flex-row gap-6 p-2">
         <div className="flex flex-col justify-center p-5 w-full lg:w-1/2">
           <div className="p-4">
-            <p className="font-semibold text-xl">New ARRIVAL ONLY</p>
+            <p className="font-semibold text-xl">NEW ARRIVAL ONLY</p>
             <div className="font-bold text-5xl md:text-6xl lg:text-7xl gap-3 flex items-center">
               new <img className="w-12 md:w-16 lg:w-20 h-auto" src={hand} alt="" />
             </div>
