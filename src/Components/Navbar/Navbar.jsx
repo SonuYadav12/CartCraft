@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <div className="flex  md:flex-row items-center justify-around shadow-lg p-2 bg-white">
       <div className="flex items-center">
-        <img className="w-14 mr-2" src={logo} alt="logo" />
+        <Link to="/"><img className="w-14 mr-2" src={logo} alt="logo" /></Link>
         <h1 className="text-xl font-bold">SHOPPER</h1>
       </div>
       <div className="md:block hidden text-lg">
