@@ -87,7 +87,7 @@ const Navbar = () => {
         </div>
       </div>
       {/* Hamburger menu */}
-      <div className="md:hidden">
+      <div className="md:hidden ">
         <button onClick={toggleMenu}>
           <svg
             className="h-6 w-6"
@@ -149,6 +149,8 @@ const Navbar = () => {
                 >
                   Kids
                 </Link>
+              </li>
+              <li>
                 <div className="relative">
                   <Link to="/cart">
                     <img src={cart_icon} alt="cart" className="w-6 h-6" />
@@ -157,6 +159,13 @@ const Navbar = () => {
                     0
                   </div>
                 </div>
+              </li>
+              <li>
+                 <Link to="/login">
+                  <button className="shadow-sm p-2 rounded-2xl  md:bg-gray-200">
+                    Login
+                  </button>
+                </Link>
               </li>
             </ul>
           </div>
