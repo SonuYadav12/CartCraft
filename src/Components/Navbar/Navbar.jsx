@@ -80,10 +80,11 @@ const Navbar = () => {
         <div className="relative">
           <Link to="/cart">
             <img src={cart_icon} alt="cart" className="w-6 h-6" />
-          </Link>
+         
           <div className="absolute top-0 right-0 -mt-1 -mr-1 bg-red-700 text-white w-4 h-4 flex items-center justify-center rounded-full text-xs">
             0
           </div>
+          </Link>
         </div>
       </div>
       {/* Hamburger menu */}
