@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import start_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
+import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = (props) => {
   const { product } = props;
-
+ const {addtocart}=useContext(ShopContext);
   return (
     <div className="flex justify-center items-center mb-5">
       <div className="flex flex-col md:flex-row md:mx-20 mt-4 md:mt-0">
@@ -57,8 +58,8 @@ Introducing our versatile Essential Cotton Shirt: a wardrobe staple crafted for 
               ))}
             </div>
           </div>
-          <div className="w-full bg-red-600 rounded-sm p-3 mt-3 text-center text-2xl font-serif">
-            <button>ADD TO CART</button>
+          <div className="w-full cursor-pointer bg-red-600 rounded-sm p-3 mt-3 text-center text-2xl font-serif">
+            <button onClick={()=>{addtocart(product.id)}}>ADD TO CART</button>
           </div>
           <p>
             <span className="font-bold mr-2">Category:</span> Women, T-Shirt, Crop Top
