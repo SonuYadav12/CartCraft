@@ -1,11 +1,24 @@
 import React, { useContext } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import start_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 
 const ProductDisplay = (props) => {
   const { product } = props;
- const {addtocart}=useContext(ShopContext);
+  const { addtocart } = useContext(ShopContext);
+
+  const tostshow = () => {
+    toast.success("Added to cart successfully!", {
+      position: "top-right",
+      style: {
+        background: "green",
+        color: "white",
+      },
+    });
+  };
+
   return (
     <div className="flex justify-center items-center mb-5">
       <div className="flex flex-col md:flex-row md:mx-20 mt-4 md:mt-0">
@@ -41,8 +54,7 @@ const ProductDisplay = (props) => {
           </div>
           <div className="border-2 py-8 rounded-md font-medium">
             <p>
-             
-Introducing our versatile Essential Cotton Shirt: a wardrobe staple crafted for comfort and style. Made from premium cotton, it offers a tailored fit and timeless appeal. Perfect for any occasion, from casual outings to formal affairs.
+              Introducing our versatile Essential Cotton Shirt: a wardrobe staple crafted for comfort and style. Made from premium cotton, it offers a tailored fit and timeless appeal. Perfect for any occasion, from casual outings to formal affairs.
             </p>
           </div>
           <div>
@@ -58,8 +70,8 @@ Introducing our versatile Essential Cotton Shirt: a wardrobe staple crafted for 
               ))}
             </div>
           </div>
-          <div className="w-full cursor-pointer bg-red-600 rounded-sm p-3 mt-3 text-center text-2xl font-serif">
-            <button onClick={()=>{addtocart(product.id)}}>ADD TO CART</button>
+          <div onClick={() => { addtocart(product.id); tostshow(); }} className="w-full cursor-pointer bg-red-600 rounded-sm p-3 mt-3 text-center text-2xl font-serif">
+            <button >ADD TO CART</button>
           </div>
           <p>
             <span className="font-bold mr-2">Category:</span> Women, T-Shirt, Crop Top
@@ -69,6 +81,7 @@ Introducing our versatile Essential Cotton Shirt: a wardrobe staple crafted for 
           </p>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
