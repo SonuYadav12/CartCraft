@@ -38,9 +38,7 @@ const ShopContextProvider = (props) => {
     }));
   };
 
-  useEffect(() => {
-    console.log(cartItem);
-  }, [cartItem]);
+ 
 
   const contextValue = { all_product, cartItem, addtocart, removetocart,getTotalcartitem };
 
