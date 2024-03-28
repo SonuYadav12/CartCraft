@@ -20,12 +20,12 @@ const CartItem = () => {
   return (
     <div className="container mx-auto">
       <div className="flex flex-col">
-        <div className="flex justify-around items-center font-serif p-5 bg-gray-200">
+        <div className="md:flex  hidden justify-around items-center font-serif p-5 ml-1  bg-gray-200">
           <p>Product</p>
           <p>Title</p>
           <p>Price</p>
           <p>Quantity</p>
-          <p>Total</p>
+          {/* <p>Total</p> */}
           <p>Remove</p>
         </div>
         <hr />
@@ -35,11 +35,14 @@ const CartItem = () => {
             if (quantity > 0) {
               return (
                 <div key={product.id} className="flex items-center justify-around mx-4 my-2 p-2 border-b border-gray-300">
-                  <img className="w-20 h-20 object-contain mr-4" src={product.image} alt={product.name} />
-                  <p className="font-serif truncate">{product.name}</p>
+                  <img className="w-20 h-20 object-contain " src={product.image} alt={product.name} />
+                  <div className="flex wrap w-20"> 
+                  <p className="font-serif ">{product.name.substring(0,20)}...</p>
+                  </div>
+                  
                   <p>${product.new_price}</p>
                   <button className="px-3 py-1 bg-gray-300">{quantity}</button>
-                  <p>${product.new_price * quantity}</p>
+                  {/* <p>${product.new_price * quantity}</p> */}
                   <img
                     src={remove_icon}
                     className="cursor-pointer w-6 h-6"

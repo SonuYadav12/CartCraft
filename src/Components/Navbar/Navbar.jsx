@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
 import { Link } from "react-router-dom";
+import { ShopContext } from "../../Context/ShopContext";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("Shop");
   const [showMenu, setShowMenu] = useState(false);
-
+  const {getTotalcartitem}=useContext(ShopContext)
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -82,7 +83,7 @@ const Navbar = () => {
             <img src={cart_icon} alt="cart" className="w-6 h-6" />
          
           <div className="absolute top-0 right-0 -mt-1 -mr-1 bg-red-700 text-white w-4 h-4 flex items-center justify-center rounded-full text-xs">
-            0
+            {getTotalcartitem()}
           </div>
           </Link>
         </div>
