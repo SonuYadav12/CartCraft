@@ -8,7 +8,8 @@ const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("Shop");
   const [showMenu, setShowMenu] = useState(false);
   const { getTotalcartitem } = useContext(ShopContext);
-  const location = useLocation(); 
+  const location = useLocation();
+  const isLoggedIn = localStorage.getItem("auth-token");
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -16,7 +17,7 @@ const Navbar = () => {
 
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
-    toggleMenu(); 
+    toggleMenu();
   };
 
   const isLoginPage = location.pathname === "/login";
@@ -102,15 +103,24 @@ const Navbar = () => {
       </div>
       {/* Cart and Login */}
       <div className="md:flex hidden items-center justify-center gap-1 cursor-pointer">
-        {localStorage.getItem("auth-token") ? (
-          <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
-            onClick={() => {
-              localStorage.removeItem("auth-token");
-              window.location.replace("/login");
-            }}
-          >
-            Logout
-          </button>
+        {isLoggedIn ? (
+          <>
+            <button
+              className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
+              onClick={() => {
+                localStorage.removeItem("auth-token");
+                window.location.replace("/login");
+              }}
+            >
+              Logout
+            </button>
+            <Link
+              to="https://crcrt-admin-page.vercel.app/"
+              className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
+            >
+              Admin Page
+            </Link>
+          </>
         ) : (
           <Link to="/login">
             <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200">
@@ -157,23 +167,34 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-            {localStorage.getItem("auth-token") ? (
-          <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
-            onClick={() => {
-              localStorage.removeItem("auth-token");
-              window.location.replace("/login");
-            }}
-          >
-            Logout
-          </button>
-        ) : (
-          <Link to="/login">
-            <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200">
-              Login
-            </button>
-          </Link>
-        )}
+              {isLoggedIn ? (
+                <button
+                  className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
+                  onClick={() => {
+                    localStorage.removeItem("auth-token");
+                    window.location.replace("/login");
+                  }}
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link to="/login">
+                  <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200">
+                    Login
+                  </button>
+                </Link>
+              )}
             </li>
+            {isLoggedIn && (
+              <li>
+                <Link
+                  to="https://crcrt-admin-page.vercel.app/"
+                  className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
+                >
+                  Admin Page
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       )}
