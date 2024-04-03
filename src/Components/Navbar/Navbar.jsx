@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../Assets/logo.png";
 import cart_icon from "../Assets/cart_icon.png";
-import { Link } from "react-router-dom";
 import { ShopContext } from "../../Context/ShopContext";
 
 const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState("Shop");
   const [showMenu, setShowMenu] = useState(false);
   const { getTotalcartitem } = useContext(ShopContext);
+  const location = useLocation(); 
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -17,6 +18,12 @@ const Navbar = () => {
     setActiveMenu(menu);
     toggleMenu(); 
   };
+
+  const isLoginPage = location.pathname === "/login";
+
+  if (isLoginPage) {
+    return null; // Hide the navbar on the login page
+  }
 
   return (
     <div className="flex md:flex-row items-center justify-around shadow-lg p-2 bg-white">
