@@ -3,12 +3,12 @@ import { ShopContext } from "../../Context/ShopContext";
 import remove_icon from "../Assets/cart_cross_icon.png";
 
 const CartItem = () => {
-  const { all_product, cartItem, removetocart } = useContext(ShopContext);
+  const { allProduct, cartItem, removetocart } = useContext(ShopContext);
 
   // Calculate total price
   const calculateTotalPrice = () => {
     let total = 0;
-    all_product.forEach((product) => {
+    allProduct.forEach((product) => {
       const quantity = cartItem[product.id];
       if (quantity > 0) {
         total += product.new_price * quantity;
@@ -31,7 +31,7 @@ const CartItem = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {all_product.map((product) => {
+            {allProduct.map((product) => {
               const quantity = cartItem[product.id];
               if (quantity > 0) {
                 return (

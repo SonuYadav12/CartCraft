@@ -1,8 +1,27 @@
-import React from 'react';
-import data_product from "../Assets/data";
+import React, { useEffect, useState } from 'react';
+// import data_product from "../Assets/data";
 import Item from '../Items/Item';
 
 const Popular = () => {
+
+  const [data_product,setdataproduct]=useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:4000/popwomen")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch new collection");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setdataproduct(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching new collection:", error);
+      });
+  }, []);
+
   return (
     <div className='flex flex-col items-center justify-center '>
     <h1 className=' text-3xl font-semibold p-2 '>POPULAR IN WOMEN</h1>

@@ -1,8 +1,27 @@
-import React from 'react';
-import new_collection from "../Assets/new_collections";
+import React, { useEffect, useState } from 'react';
 import Item from '../Items/Item';
 
 const NewCollection = () => {
+  const [new_collection,setNewCollection]=useState([]);
+
+  
+  useEffect(() => {
+    fetch("http://localhost:4000/newcollection")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch new collection");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setNewCollection(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching new collection:", error);
+      });
+  }, []);
+  
+
   return (
     <div className=' flex flex-col items-center justify-cente bg-gradient-to-b from-pink-300 via-white to-white '>
     <h1 className=' text-3xl font-semibold p-2 '>NEW COLLECTIONS</h1>

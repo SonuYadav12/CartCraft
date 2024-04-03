@@ -5,11 +5,10 @@ import start_icon from "../Assets/star_icon.png";
 import star_dull_icon from "../Assets/star_dull_icon.png";
 import { ShopContext } from "../../Context/ShopContext";
 
-const ProductDisplay = (props) => {
-  const { product } = props;
+const ProductDisplay = ({ product }) => {
   const { addtocart } = useContext(ShopContext);
 
-  const tostshow = () => {
+  const showToast = () => {
     toast.success("Added to cart successfully!", {
       position: "top-right",
       style: {
@@ -19,19 +18,14 @@ const ProductDisplay = (props) => {
     });
   };
 
+  // Check if product is defined before accessing its properties
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="flex justify-center items-center mb-5">
       <div className="flex flex-col md:flex-row md:mx-20 mt-4 md:mt-0">
-        <div className="hidden md:flex flex-col items-center justify-center gap-2">
-          {[...Array(3)].map((_, index) => (
-            <img
-              key={index}
-              className="w-60 h-40 rounded-md shadow-md"
-              src={product.image}
-              alt=""
-            />
-          ))}
-        </div>
         <div className="flex justify-center md:justify-start items-center w-full md:w-6/12 p-2 bg-red-400">
           <img
             className="rounded-lg shadow-lg w-full h-full shadow-black"
@@ -70,7 +64,7 @@ const ProductDisplay = (props) => {
               ))}
             </div>
           </div>
-          <div onClick={() => { addtocart(product.id); tostshow(); }} className="w-full cursor-pointer bg-red-600 rounded-sm p-3 mt-3 text-center text-2xl font-serif">
+          <div onClick={() => { addtocart(product.id); showToast(); }} className="w-full cursor-pointer bg-red-600 rounded-sm p-3 mt-3 text-center text-2xl font-serif">
             <button >ADD TO CART</button>
           </div>
           <p>
