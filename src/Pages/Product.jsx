@@ -5,7 +5,6 @@ import Breadcrum from "../Components/Breadcrum/Breadcrum";
 import ProductDisplay from "../Components/ProductDisplay/ProductDisplay";
 import ReleatedProducts from "../Components/RelatedProducts/ReleatedProducts";
 
-
 const Product = () => {
   const { allProduct } = useContext(ShopContext);
   const { productId } = useParams();
