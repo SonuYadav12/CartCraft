@@ -15,7 +15,7 @@ const Navbar = () => {
 
   const handleMenuClick = (menu) => {
     setActiveMenu(menu);
-    toggleMenu(); // Close the menu after clicking on an item
+    toggleMenu(); 
   };
 
   return (
@@ -95,11 +95,22 @@ const Navbar = () => {
       </div>
       {/* Cart and Login */}
       <div className="md:flex hidden items-center justify-center gap-1 cursor-pointer">
-        <Link to="/login">
-          <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200">
-            Login
+        {localStorage.getItem("auth-token") ? (
+          <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              window.location.replace("/login");
+            }}
+          >
+            Logout
           </button>
-        </Link>
+        ) : (
+          <Link to="/login">
+            <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200">
+              Login
+            </button>
+          </Link>
+        )}
         <div className="relative">
           <Link to="/cart">
             <img src={cart_icon} alt="cart" className="w-6 h-6" />
@@ -114,34 +125,22 @@ const Navbar = () => {
         <div className="md:hidden absolute right-0 top-16 bg-white border rounded-lg shadow-lg">
           <ul className="flex flex-col gap-2 p-4">
             <li>
-              <Link
-                to="/"
-                onClick={() => handleMenuClick("Shop")}
-              >
+              <Link to="/" onClick={() => handleMenuClick("Shop")}>
                 Shop
               </Link>
             </li>
             <li>
-              <Link
-                to="/men"
-                onClick={() => handleMenuClick("Men")}
-              >
+              <Link to="/men" onClick={() => handleMenuClick("Men")}>
                 Men
               </Link>
             </li>
             <li>
-              <Link
-                to="/women"
-                onClick={() => handleMenuClick("Women")}
-              >
+              <Link to="/women" onClick={() => handleMenuClick("Women")}>
                 Women
               </Link>
             </li>
             <li>
-              <Link
-                to="/kids"
-                onClick={() => handleMenuClick("Kids")}
-              >
+              <Link to="/kids" onClick={() => handleMenuClick("Kids")}>
                 Kids
               </Link>
             </li>
@@ -151,11 +150,22 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="/login">
-                <button className="shadow-sm p-2 rounded-2xl bg-gray-200">
-                  Login
-                </button>
-              </Link>
+            {localStorage.getItem("auth-token") ? (
+          <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200"
+            onClick={() => {
+              localStorage.removeItem("auth-token");
+              window.location.replace("/login");
+            }}
+          >
+            Logout
+          </button>
+        ) : (
+          <Link to="/login">
+            <button className="shadow-sm p-2 rounded-2xl px-4 bg-gray-200">
+              Login
+            </button>
+          </Link>
+        )}
             </li>
           </ul>
         </div>
