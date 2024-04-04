@@ -10,7 +10,8 @@ const ShopContextProvider = (props) => {
     const fetchData = async () => {
       try {
         // Fetch products
-        const productResponse = await fetch("http://localhost:4000/allproduct");
+        // const productResponse = await fetch("http://localhost:4000/allproduct");
+        const productResponse = await fetch("https://cart-craft-api.vercel.app/allproduct");
         if (!productResponse.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -19,7 +20,8 @@ const ShopContextProvider = (props) => {
 
         // Fetch cart data if user is authenticated
         if (localStorage.getItem("auth-token")) {
-          const cartResponse = await fetch("http://localhost:4000/getcart", {
+          // const cartResponse = await fetch("http://localhost:4000/getcart", {
+            const cartResponse = await fetch("https://cart-craft-api.vercel.app/getcart", {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -49,7 +51,8 @@ const ShopContextProvider = (props) => {
 
   const addtocart = async (itemId) => {
     try {
-      const response = await fetch("http://localhost:4000/addtocart", {
+      // const response = await fetch("http://localhost:4000/addtocart", {
+        const response = await fetch("https://cart-craft-api.vercel.app/addtocart", {
         method: "POST",
         headers: {
           "auth-token": localStorage.getItem("auth-token"),
@@ -81,7 +84,8 @@ const ShopContextProvider = (props) => {
     
     const authToken = localStorage.getItem("auth-token");
     if(authToken){
-      fetch("http://localhost:4000/removefromcart",{
+      // fetch("http://localhost:4000/removefromcart",{
+        fetch("https://cart-craft-api.vercel.app/removefromcart",{
         method:"POST",
         headers:{
           "auth-token": authToken,

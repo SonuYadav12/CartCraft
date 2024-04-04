@@ -6,7 +6,8 @@ const NewCollection = () => {
 
   
   useEffect(() => {
-    fetch("http://localhost:4000/newcollection")
+    // fetch("http://localhost:4000/newcollection")
+    fetch("https://cart-craft-api.vercel.app/newcollection")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch new collection");

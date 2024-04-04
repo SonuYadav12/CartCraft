@@ -7,7 +7,8 @@ const Popular = () => {
   const [data_product,setdataproduct]=useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/popwomen")
+    // fetch("http://localhost:4000/popwomen")
+    fetch("https://cart-craft-api.vercel.app/popwomen")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch new collection");
